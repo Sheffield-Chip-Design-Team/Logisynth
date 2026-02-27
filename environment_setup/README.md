@@ -125,7 +125,7 @@ which verilator
 ### 6) Run environment checks
 
 ```bash
-chmod +x ./env_check.sh
+sudo chmod +x ./env_check.sh
 ./env_check.sh
 ```
 
