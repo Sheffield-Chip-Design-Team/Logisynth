@@ -163,3 +163,4 @@ Once installed, go to the extension settings and then go to the linting section:
 
 If you are already on Ubuntu 24.04 (not WSL), skip the WSL steps and start from section 0.1.
 ![alt text](image-4.png)
+ test
