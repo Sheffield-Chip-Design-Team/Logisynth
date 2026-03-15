@@ -94,23 +94,27 @@ source venv/bin/activate
 ```
 If you do not activate the venv, the terminal will usually warn because you can contaminate the system-wide environment.
 
-### 4) Install Python dependencies
-Ensure the venv is active before installing requirements.
-
+Note:
+If you move to a different project, make sure you work in the environment created there.
+For that, you first deactivate the venv of the current project
 ```bash
-cd environment_setup
-python3 -m pip install -r requirements.txt
+deactivate
 ```
+Then follow the same steps to activate the venv of the different project
 
-### 5) Install Verilator (stable)
+### 4) Install Verilator (stable)
 
 This repo uses Verilator for linting and simulation. Cocotb requires **Verilator >= 5.036**.
 
 Run the official Git-based install script (installs to `/usr/local`, requires `sudo`):
 
 ```bash
-sudo chmod +x ./install_verilator_stable.sh
 ./install_verilator_stable.sh
+```
+
+If the .sh script doesn't work try this first and rerun it:
+```bash
+sudo chmod +x ./install_verilator_stable.sh
 ```
 
 (It may take some time)
@@ -121,11 +125,14 @@ Verify:
 verilator --version
 which verilator
 ```
+### 5) Install Coraltb
+Follow the install instructions on https://github.com/Sheffield-Chip-Design-Team/Coraltb
+
+Note: For Step 2 on the instructions, you have to have the Logisynth venv activated, it stays activated even if you leave.
 
 ### 6) Run environment checks
 
 ```bash
-sudo chmod +x ./env_check.sh
 ./env_check.sh
 ```
 
@@ -163,4 +170,3 @@ Once installed, go to the extension settings and then go to the linting section:
 
 If you are already on Ubuntu 24.04 (not WSL), skip the WSL steps and start from section 0.1.
 ![alt text](image-4.png)
- test
