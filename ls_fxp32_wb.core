@@ -1,0 +1,42 @@
+CAPI=2:
+name: sharc:audio_ip:ls_fxp32_wb:0.0.1
+description: Logisynth fixed point 32-bit synthesizer peripheral with wishbone bus interface.
+
+filesets:
+  rtl:
+    files:
+      - hw/rtl/ls_periph_top.v:                         {file_type: verilogSource}
+      - hw/rtl/ls_synth_engine.v                        {file_type: verilogSource}
+      - hw/rtl/ls_osc.v:                                {file_type: verilogSource}
+      - hw/rtl/ls_mixer.v:                              {file_type: verilogSource}
+      - hw/rtl/ls_adsr.v:                               {file_type: verilogSource}
+      - hw/rtl/ls_gpfu.v:                               {file_type: verilogSource}
+      - hw/rtl/ls_gain_ctrl.v:                          {file_type: verilogSource}
+      - hw/rtl/ls_sample_pp:                            {file_type: verilogSource}
+      - hw/rtl/ls_midi_if.v:                            {file_type: verilogSource}
+      - hw/rtl/ls_i2s_if.v:                             {file_type: verilogSource}
+
+  #tb_top:
+  #  files: 
+  #    - hw/tb/ls_periph_top/ls_periph_top_wtb.v:       {file_type: verilogSource}
+  #    - hw/tb/ls_periph_top/test_ls_periph_top.py:     {file_type: pythonSource}
+  #  depend:
+  #    - ">=sharc:mem_ip:ram_1rw:0.0.1"
+
+targets:
+  default: &sim
+    description: Default.
+    filesets:
+      - rtl
+    toplevel: ls_periph_top_wtb
+
+  tb_top:
+    <<: *sim
+    description: Directed test for the Logisynth Peripheral.
+    flow: sim
+    flow_options:
+      tool: verilator
+    filesets_append:
+      - tb_top
+    toplevel: ls_periph_top_wtb
+
