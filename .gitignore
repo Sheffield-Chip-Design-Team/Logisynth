@@ -15,6 +15,7 @@ __pycache__/
 .ruff_cache/
 .venv/
 venv/
+.env/
 
 # Build artifacts
 dist/
@@ -27,3 +28,5 @@ build/
 
 # Repos 
 Coraltb/
+coraltb/
+project-venv
